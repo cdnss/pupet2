@@ -97,7 +97,7 @@ module.exports = async (req, res) => {
     await browser.close();
 
     res.statusCode = 200;
-   // res.setHeader("Content-Type", `text/html`);
+    res.setHeader("Content-Type", `text/html`);
 
     // return the file!
     res.end($.html());
