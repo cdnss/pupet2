@@ -7,7 +7,7 @@
 // seconds when deployed on a Personal Account (Hobby plan).
 // For Teams, the execution timeout is 60 seconds (Pro plan)
 // or 900 seconds (Enterprise plan).
-
+const cheerio = require("cheerio");
 const puppeteer = require("puppeteer-core");
 const chrome = require("chrome-aws-lambda");
 
@@ -78,21 +78,29 @@ module.exports = async (req, res) => {
     });
 
     // tell the page to visit the url
-    await page.goto(pageToScreenshot);
+    await page.goto(pageToScreenshot,  {
+   waitUntil: 'networkidle0'
+  });
 
     // take a screenshot
-    const file = await page.screenshot({
+   /* const file = await page.screenshot({
       type: "png",
-    });
+    });*/
+
+  const data = await page.evaluate(() => document.querySelector('*').outerHTML);
+
+  const $ = cheerio.load(data);
+  $("script").remove();
+
 
     // close the browser
     await browser.close();
 
     res.statusCode = 200;
-    res.setHeader("Content-Type", `image/png`);
+   // res.setHeader("Content-Type", `text/html`);
 
     // return the file!
-    res.end(file);
+    res.end($.html());
   } catch (e) {
     res.statusCode = 500;
     res.json({
