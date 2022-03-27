@@ -1,4 +1,3 @@
-// Shout outs to the following repositories:
 
 // https://github.com/vercel/og-image
 // https://github.com/ireade/netlify-puppeteer-screenshot-demo
