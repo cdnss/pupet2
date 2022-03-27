@@ -85,8 +85,8 @@ module.exports = async (req, res) => {
     await page.goto(pageToScreenshot,  {
    waitUntil: 'networkidle0'
   });
-  await page.waitForSelector('span.counter_tampilan_tambahan');
-  await page.click('#player-option-3');
+ 
+  await page.click('div#player-option-3');
 
   const data = await page.evaluate(() => document.querySelector('*').outerHTML);
 
