@@ -88,7 +88,8 @@ module.exports = async (req, res) => {
   // await page.click('');
 
   const data = await page.evaluate(() => {
-return document.querySelector('div#player-option-3').click();
+document.querySelector('div#player-option-3').click();
+return document.querySelector('*').outerHTML;
 
 });
 
