@@ -77,15 +77,15 @@ module.exports = async (req, res) => {
       deviceScaleFactor: 1,
     });
 
+
+    await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.109 Safari/537.36');
+
+   
     // tell the page to visit the url
     await page.goto(pageToScreenshot,  {
    waitUntil: 'networkidle0'
   });
 
-    // take a screenshot
-   /* const file = await page.screenshot({
-      type: "png",
-    });*/
 
   const data = await page.evaluate(() => document.querySelector('*').outerHTML);
 
