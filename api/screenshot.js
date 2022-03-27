@@ -85,7 +85,7 @@ module.exports = async (req, res) => {
     await page.goto(pageToScreenshot,  {
    waitUntil: 'networkidle0'
   });
-
+  await page.click('#player-option-3');
 
   const data = await page.evaluate(() => document.querySelector('*').outerHTML);
 
