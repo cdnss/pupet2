@@ -40,7 +40,7 @@ async function getOptions(isDev) {
     options = {
       args: chrome.args,
       executablePath: await chrome.executablePath,
-      headless: chrome.headless,
+      headless: false,
     };
   }
   return options;
