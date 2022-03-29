@@ -84,17 +84,19 @@ module.exports = async (req, res) => {
     await page.goto(pageToScreenshot,  {
    waitUntil: 'networkidle0'
   });
- 
-  // await page.click('');
+ await page.waitForTimeout(5000);
+
+   await page.click('div#player-option-3');
+  
 
   const data = await page.evaluate(() => {
-document.querySelector('div#player-option-3').click();
+   
 return document.querySelector('*').outerHTML;
 
 });
 
   const $ = cheerio.load(data);
-  $("script").remove();
+ // $("script").remove();
 
 
     // close the browser
