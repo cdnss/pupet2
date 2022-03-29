@@ -86,7 +86,7 @@ module.exports = async (req, res) => {
   });
  //await page.waitForTimeout(3000);
 
-   await page.click('div#player-option-3');
+   await page.waitForNavigation('#player-option-3');
   
 
   const data = await page.evaluate(() => {
