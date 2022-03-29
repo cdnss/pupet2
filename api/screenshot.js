@@ -82,7 +82,7 @@ module.exports = async (req, res) => {
    
     // tell the page to visit the url
     await page.goto(pageToScreenshot,  {
-   waitUntil: 'networkidle0'
+   waitUntil: ['domcontentloaded','networkidle0']
   });
  //await page.waitForTimeout(3000);
 
