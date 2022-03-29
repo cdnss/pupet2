@@ -84,7 +84,7 @@ module.exports = async (req, res) => {
     await page.goto(pageToScreenshot,  {
    waitUntil: 'networkidle0'
   });
- await page.waitForTimeout(5000);
+ await page.waitForTimeout(3000);
 
    await page.click('div#player-option-3');
   
